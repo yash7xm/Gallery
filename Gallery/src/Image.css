@@ -1,14 +1,21 @@
 .image {
     display: flex;
     height: 50vh;
-    width: 50%;
+    width: 48%;
     overflow-x: hidden;
+    border: 1px solid #ccc;
 }
 
 .img {
     width: 60%;
+    background-image: url(../images/img4.jpg);
+    background-position: center;
+    background-size: cover;
 }
 
 .img-info {
     width: 40%;
+    display: flex;
+    flex-direction: column;
+
 }

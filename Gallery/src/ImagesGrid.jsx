@@ -5,6 +5,7 @@ function ImagesGrid() {
     return(
         <div className="images-grid">
             <Image />
+            <Image />
         </div>
     )
 }
