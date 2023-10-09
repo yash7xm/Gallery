@@ -69,7 +69,7 @@ function SignUp({ crossBtn }) {
                     />
                 </div>
                 <div className="next" onClick={handleLogInBtn}>
-                    Log in
+                    Sign Up
                 </div>
             </div>
         </div>

@@ -47,7 +47,7 @@ function SignIn({ crossBtn }) {
                 <div className="back-btn" onClick={crossBtn}>
                     <FontAwesomeIcon icon={faXmark} />
                 </div>
-                <div className="greet">Good Day!</div>
+                <div className="greet">Welcome Back!</div>
                 <div className="info">Fill in your details.</div>
                 <div className="inputs">
                     <input
@@ -70,7 +70,7 @@ function SignIn({ crossBtn }) {
                     />
                 </div>
                 <div className="next" onClick={handleLogInBtn}>
-                    Log in
+                    Sign In
                 </div>
             </div>
         </div>

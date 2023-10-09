@@ -28,11 +28,11 @@ function Navigation() {
                 </div>
                 <div className="sign-btn">
                    <div className="signUp-btn">
-                    {!signUpToggle && <div  onClick={handleSignUpBtn}>Sign Up</div>}
+                    {!signUpToggle && <div  onClick={handleSignUpBtn}>SignUp</div>}
                     {signUpToggle && <SignUp crossBtn = {handleSignUpBtn} />}
                    </div>
                    <div className="signIn-btn">
-                   {!signInToggle && <div  onClick={handleSignInBtn}>Sign In</div>}
+                   {!signInToggle && <div  onClick={handleSignInBtn}>SignIn</div>}
                     {signInToggle && <SignIn crossBtn = {handleSignInBtn} />}
                    </div>
                 </div>

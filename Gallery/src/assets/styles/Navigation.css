@@ -48,7 +48,13 @@
     width: 15%;
 }
 
-.info-btns div, .sign-btn {
+.info-btns div, .sign-btn div{
     cursor: pointer;
+}
+
+.sign-btn {
+    display: flex;
+    width: 10%;
+    justify-content: space-between;
 }
 
