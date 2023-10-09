@@ -32,7 +32,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
-app.post('/logIn', async (req, res) => {
+app.post('/signUp', async (req, res) => {
     console.log(req.body);
 
 
@@ -46,6 +46,18 @@ app.post('/logIn', async (req, res) => {
 
     await user.save();
     res.sendStatus(200);
+})
+
+app.post('/signIn', async (req, res) => {
+    const user = await User.findOne({ username: req.body.username });
+    console.log('signIn')
+
+    const validPassword = await bcrypt.compare(req.body.password, user.password);
+
+    if(validPassword) {
+        res.sendStatus(200);
+    }
+    else res.sendStatus(400);
 })
 
 app.get('/users', async(req, res) => {

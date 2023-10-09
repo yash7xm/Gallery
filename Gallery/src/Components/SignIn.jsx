@@ -3,7 +3,7 @@ import '../assets/styles/signUp.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
-function SignUp({ crossBtn }) {
+function SignIn({ crossBtn }) {
     const [formData, setFormData] = useState({
         username: '',
         password: '',
@@ -24,19 +24,20 @@ function SignUp({ crossBtn }) {
           return;
         }
       
-        fetch('http://localhost:8080/signUp', {
+        fetch('http://localhost:8080/signIn', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(formData),
         })
-          .then(() => {
-            crossBtn();
-          })
-          .catch((error) => {
+        .then(response => {
+            if(response.status == 400) window.alert("Please enter correct details");
+            else crossBtn();
+        })
+        .catch((error) => {
             console.error('Fetch error:', error);
-          });
+        });
       }
       
 
@@ -76,4 +77,4 @@ function SignUp({ crossBtn }) {
     );
 }
 
-export default SignUp;
+export default SignIn;
