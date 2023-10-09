@@ -1,7 +1,7 @@
 import Navigation from "./Navigation"
 import ImagesGrid from "./ImagesGrid"
 import Footer from "./Footer"
-import "./Content.css"
+import "../assets/styles/Content.css"
 
 
 function Content() {

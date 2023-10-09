@@ -1,5 +1,5 @@
 import Image from "./Image"
-import "./ImagesGrid.css"
+import "../assets/styles/ImagesGrid.css"
 
 function ImagesGrid() {
     return(

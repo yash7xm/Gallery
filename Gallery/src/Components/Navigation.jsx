@@ -1,4 +1,4 @@
-import "./Navigation.css"
+import "../assets/styles/Navigation.css"
 
 function Navigation() {
     return (

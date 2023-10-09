@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
-function ExpandImage({toggleFxn}) {
+function ExpandImage({toggleFxn, views}) {
     return(
         <div className="img-img">
             <div className="img-wrapper" onClick={toggleFxn}>
@@ -24,7 +24,7 @@ function ExpandImage({toggleFxn}) {
                     <div className="views-info">
                         <div className="titles">Views</div>
                         <div className="img-view">
-                            20K
+                            {views}
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 import SideBar from './SideBar'
-import Content from './content'
-import './App.css'
+import Content from './Content'
+import '../assets/styles/App.css'
 
 function App() {
 
