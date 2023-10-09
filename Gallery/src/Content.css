@@ -1,0 +1,10 @@
+.contents {
+    width: 95%;
+    top: 0;
+    left: 5vw;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    overflow-y: scroll;
+}

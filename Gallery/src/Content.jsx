@@ -1,10 +1,14 @@
 import Navigation from "./Navigation"
+import ImagesGrid from "./ImagesGrid"
 import "./Content.css"
 
 
 function Content() {
     return (
-       <Navigation />
+        <div className="contents">
+            <Navigation />
+            <ImagesGrid />
+        </div>
     )
 }
 

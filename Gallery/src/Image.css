@@ -1,0 +1,14 @@
+.image {
+    display: flex;
+    height: 50vh;
+    width: 50%;
+    overflow-x: hidden;
+}
+
+.img {
+    width: 60%;
+}
+
+.img-info {
+    width: 40%;
+}
