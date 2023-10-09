@@ -6,6 +6,14 @@ function ImagesGrid() {
         <div className="images-grid">
             <Image />
             <Image />
+            <Image />
+            <Image />
+            <Image />
+            <Image />
+            <Image />
+            <Image />
+            <Image />
+            <Image />
         </div>
     )
 }

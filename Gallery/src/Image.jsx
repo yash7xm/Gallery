@@ -1,26 +1,18 @@
+import { useState } from "react"
+import ExpandImage from "./ExpandImage";
 import "./Image.css"
 
 function Image() {
-    return(
-        <div className="image">
-            <div className="img">
+    const [toggle, setToggle] = useState(false);
+    const expandImg = () => {
+        setToggle(!toggle);
+    } 
 
-            </div>
-            <div className="img-info">
-                <div>
-                    <div>Title</div>
-                    <div className="img-title">A Dancing Gorrilla</div>
-                </div>
-               <div>
-                    <div>Description</div>
-                    <div className="img-desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</div>
-               </div>
-               <div>
-                    <div>Views</div>
-                    <div className="img-views">20K</div>
-               </div>
-            </div>
-        </div>
+    return(
+        <>
+            {toggle && <ExpandImage toggleFxn = {expandImg}/>}
+            {!toggle && <div className="img" onClick={expandImg}></div>}
+        </>
     )
 }
 
