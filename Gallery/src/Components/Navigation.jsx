@@ -1,6 +1,15 @@
 import "../assets/styles/Navigation.css"
+import SignUp from "./signUp";
+import { useState } from "react";
 
 function Navigation() {
+
+    const [signToggle, setSignToggle] = useState(false);
+
+    const handleSignUpBtn = () => {
+        setSignToggle(!signToggle);
+    }
+
     return (
         <div className="navigation">
             <div className="search">
@@ -12,7 +21,8 @@ function Navigation() {
                     <div>Your Images</div>
                 </div>
                 <div className="sign-btn">
-                    Sign Up
+                    {!signToggle && <div  onClick={handleSignUpBtn}>Sign Up</div>}
+                    {signToggle && <SignUp crossBtn = {handleSignUpBtn} />}
                 </div>
             </div>
         </div>

@@ -1,0 +1,86 @@
+.signup {
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    position: absolute;
+    top: 0;
+    left: -3rem;
+    cursor: default;
+}
+
+.signup-wrapper {
+    height: 60%;
+    width: 20%;
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    background: linear-gradient(270deg,rgba(33,33,33,.6) 14.44%,rgba(70,69,67,.6) 93.61%),#000;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+input {
+    border-radius: 5px;
+    border: 1px solid #929292;
+    background-color: hsla(0, 0%, 100%, 0.04);
+    height: 3rem;
+    font-size: 16px;
+    padding: 0px 0.8rem;
+    width: 100%;
+    outline: none;
+    color: white;
+}
+
+label {
+    color: #9d84ff;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+    position: absolute;
+}
+
+.back-btn {
+    width: 100%;
+}
+
+.next {
+    margin-bottom: 1rem;
+    padding-bottom: 0.2rem;
+    border-bottom: 1px solid white;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+.greet {
+    /* width: 50%;
+    height: 20%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.info {
+    width: 80%;
+    font-size: 1.2rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    opacity: 0.4;
+}
+
+.back-btn{
+    cursor: pointer;
+}   
+
