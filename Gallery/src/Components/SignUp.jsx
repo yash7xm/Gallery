@@ -18,24 +18,27 @@ function SignUp({ crossBtn }) {
     }
 
     function handleLogInBtn() {
-        // Send the data to the server
-        console.log(formData);
-        // fetch('/logIn', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify(formData),
-        // })
-        //     .then((response) => response.json())
-        //     .then((data) => {
-        //         // Handle the server's response here, if needed
-        //         console.log(data);
-        //     })
-        //     .catch((error) => {
-        //         console.error('Error:', error);
-        //     });
-    }
+      
+        if (formData.username === '' || formData.password === '') {
+          window.alert('Please fill all the fields');
+          return;
+        }
+      
+        fetch('http://localhost:8080/logIn', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        })
+          .then(() => {
+            crossBtn();
+          })
+          .catch((error) => {
+            console.error('Fetch error:', error);
+          });
+      }
+      
 
     return (
         <div className="signup">

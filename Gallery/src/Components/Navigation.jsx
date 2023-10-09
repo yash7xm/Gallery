@@ -4,10 +4,15 @@ import { useState } from "react";
 
 function Navigation() {
 
-    const [signToggle, setSignToggle] = useState(false);
+    const [signUpToggle, setSignUpToggle] = useState(false);
+    const [signInToggle, setSignInToggle] = useState(false);
 
     const handleSignUpBtn = () => {
-        setSignToggle(!signToggle);
+        setSignUpToggle(!signUpToggle);
+    }
+
+    const handleSignInBtn = () => {
+        setSignInToggle(!signInToggle);
     }
 
     return (
@@ -21,8 +26,14 @@ function Navigation() {
                     <div>Your Images</div>
                 </div>
                 <div className="sign-btn">
-                    {!signToggle && <div  onClick={handleSignUpBtn}>Sign Up</div>}
-                    {signToggle && <SignUp crossBtn = {handleSignUpBtn} />}
+                   <div className="signUp-btn">
+                    {!signUpToggle && <div  onClick={handleSignUpBtn}>Sign Up</div>}
+                    {signUpToggle && <SignUp crossBtn = {handleSignUpBtn} />}
+                   </div>
+                   <div className="signIn-btn">
+                   {!signInToggle && <div  onClick={handleSignInBtn}>Sign Up</div>}
+                    {signInToggle && <SignUp crossBtn = {handleSignInBtn} />}
+                   </div>
                 </div>
             </div>
         </div>
