@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../assets/styles/signUp.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import Cookies from 'js-cookie';
 
 function SignUp({ crossBtn }) {
     const [formData, setFormData] = useState({
@@ -31,8 +32,11 @@ function SignUp({ crossBtn }) {
           },
           body: JSON.stringify(formData),
         })
-          .then(() => {
+          .then((response) => {
             crossBtn();
+            if(response.status == 200) {
+                Cookies.set('username', formData.username, { expires: 7 });
+            } 
           })
           .catch((error) => {
             console.error('Fetch error:', error);

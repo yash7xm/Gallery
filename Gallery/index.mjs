@@ -2,7 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import bcrypt from 'bcryptjs';
-import cookieParser from 'cookie-parser';
+import Cookies from 'js-cookie';
 
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
@@ -30,7 +30,6 @@ const UserSchema = new mongoose.Schema({
 const User = mongoose.model('User', UserSchema);
 
 app.use(bodyParser.json());
-app.use(cookieParser());
 app.use(cors());
 
 let sessionId = '';
@@ -48,11 +47,6 @@ app.post('/signUp', async (req, res) => {
         password: hash
     })
 
-    const userId = user._id;
-    
-    res.cookie('userId', userId, { maxAge: 30 * 24 * 60 * 60 * 1000 });
-    sessionId = res.cookie.userId;
-
     await user.save();
     res.sendStatus(200);
 })
@@ -64,18 +58,15 @@ app.post('/signIn', async (req, res) => {
         const validPassword = await bcrypt.compare(req.body.password, user.password);
 
     if(validPassword) {
-        const userId = user._id;
-        res.cookie('userId', userId, { maxAge: 30 * 24 * 60 * 60 * 1000 });
-        sessionId = res.cookie.userId;
         res.sendStatus(200);
     }
     else res.sendStatus(400);
     }
 })
 
+
 app.get('/logOut', (req,res) => {
-    res.clearCookie('userId');
-    sessionId = '';
+    Cookies.remove('username');
     res.sendStatus(200);
 })
 
