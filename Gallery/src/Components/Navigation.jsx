@@ -2,7 +2,6 @@ import "../assets/styles/Navigation.css"
 import SignUp from "./signUp";
 import SignIn from './SignIn';
 import { useState } from "react";
-import cookieParser from "cookie-parser";
 
 function Navigation() {
 
