@@ -64,6 +64,12 @@ app.post('/signIn', async (req, res) => {
     }
 })
 
+app.post('/checkUser', async (req, res) => {
+    const checkUser = await User.findOne({ username: req.body.username });
+    if(checkUser) res.sendStatus(200);
+    else res.sendStatus(404);
+})
+
 
 app.get('/logOut', (req,res) => {
     Cookies.remove('username');

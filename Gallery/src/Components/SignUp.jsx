@@ -18,14 +18,36 @@ function SignUp({ crossBtn }) {
         });
     }
 
-    function handleLogInBtn() {
+    async function handleLogInBtn() {
       
         if (formData.username === '' || formData.password === '') {
           window.alert('Please fill all the fields');
           return;
         }
+
+       let userExist = false;
+       await fetch('http://localhost:8080/checkUser', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+        .then((response) => {
+            if(response.status == 200) userExist = true;
+            else userExist = false;
+        })
+        .catch((error) => {
+            console.error('Fetch error:', error);
+        });
+
+        if(userExist){
+            window.alert('User Already Exist');
+            return;
+        }
+        
       
-        fetch('http://localhost:8080/signUp', {
+        await fetch('http://localhost:8080/signUp', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
