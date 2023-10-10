@@ -73,6 +73,12 @@ app.post('/signIn', async (req, res) => {
     }
 })
 
+app.get('/logOut', (req,res) => {
+    res.clearCookie('userId');
+    sessionId = '';
+    res.sendStatus(200);
+})
+
 app.get('/users', async(req, res) => {
     const allUsers = await User.find({});
     res.send(allUsers);
