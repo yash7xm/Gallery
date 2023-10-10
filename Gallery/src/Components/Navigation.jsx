@@ -1,5 +1,5 @@
 import "../assets/styles/Navigation.css"
-import SignUp from "./signUp";
+import SignUp from "./SignUp";
 import SignIn from './SignIn';
 import { useState } from "react";
 
