@@ -3,6 +3,7 @@ import SignUp from "./SignUp";
 import SignIn from './SignIn';
 import { useState } from "react";
 import Cookies from 'js-cookie';
+import ImageUpload from "./ImageUpload";
 
 
 function Navigation() {
@@ -11,6 +12,7 @@ function Navigation() {
 
     const [signUpToggle, setSignUpToggle] = useState(false);
     const [signInToggle, setSignInToggle] = useState(false);
+    const [upload, setUpload] = useState(false);
     const [cookie, setCookie] = useState(cook);
 
     console.log(cookie);
@@ -34,8 +36,9 @@ function Navigation() {
         setSignInToggle(!signInToggle);
     }
 
-
-
+    const handleUploadBtn = () => {
+        setUpload(!upload)
+    }
 
     return (
         <div className="navigation">
@@ -44,7 +47,10 @@ function Navigation() {
             </div>
             <div className="nav-btns">
                 <div className="info-btns">
-                    <div>Upload</div>
+                    <div>
+                        {!upload && <div onClick={handleUploadBtn}>Upload</div>}
+                        {upload && <ImageUpload />}
+                    </div>
                     <div>Your Images</div>
                 </div>
                 <div className="sign-btn">
