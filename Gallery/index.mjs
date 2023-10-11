@@ -33,6 +33,10 @@ const UserSchema = new mongoose.Schema({
     },
     images: [
         {
+            title: String,
+            desc: String,
+            url: String,
+            views: Number
         },
     ]
 })
@@ -166,7 +170,7 @@ app.post('/updateImageViews', async (req, res) => {
             return res.status(400).json({ error: 'Invalid image index' });
         }
 
-        user.images[imageIndex].views = views;
+        user.images[imageIndex].views = views + 1;
 
         await user.save();
 
