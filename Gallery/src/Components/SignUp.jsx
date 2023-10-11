@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import Cookies from 'js-cookie';
 
-function SignUp({ crossBtn }) {
+function SignUp({ crossBtn, setCookieBtn }) {
     const [formData, setFormData] = useState({
         username: '',
         password: '',
@@ -34,12 +34,9 @@ function SignUp({ crossBtn }) {
             body: JSON.stringify(formData)
         })
         .then((response) => {
-            if(response.status == 200) userExist = true;
-            else userExist = false;
+            if(response.status == 200) userExist = false;
+            else userExist = true;
         })
-        .catch((error) => {
-            console.error('Fetch error:', error);
-        });
 
         if(userExist){
             window.alert('User Already Exist');
@@ -55,9 +52,10 @@ function SignUp({ crossBtn }) {
           body: JSON.stringify(formData),
         })
           .then((response) => {
-            crossBtn();
             if(response.status == 200) {
                 Cookies.set('username', formData.username, { expires: 7 });
+                crossBtn();
+                setCookieBtn();
             } 
           })
           .catch((error) => {
@@ -69,7 +67,7 @@ function SignUp({ crossBtn }) {
     return (
         <div className="signup">
             <div className="signup-wrapper">
-                <div className="back-btn" onClick={crossBtn}>
+            <div className="back-btn" onClick={() => { crossBtn(); setCookieBtn(); }}>
                     <FontAwesomeIcon icon={faXmark} />
                 </div>
                 <div className="greet">Good Day!</div>

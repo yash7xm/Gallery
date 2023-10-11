@@ -58,3 +58,8 @@
     justify-content: space-between;
 }
 
+.sign-btns {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}

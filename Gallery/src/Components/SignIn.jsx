@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import Cookies from 'js-cookie';
 
-function SignIn({ crossBtn }) {
+function SignIn({ crossBtn, setCookieBtn }) {
     const [formData, setFormData] = useState({
         username: '',
         password: '',
@@ -34,10 +34,10 @@ function SignIn({ crossBtn }) {
         })
         .then(response => {
             if(response.status == 400) window.alert("Please enter correct details");
-            else crossBtn();
             if(response.status == 200) {
                 Cookies.set('username', formData.username, { expires: 7 });
-                console.log('hello')
+                crossBtn();
+                setCookieBtn();
             } 
         })
         .catch((error) => {
@@ -49,7 +49,7 @@ function SignIn({ crossBtn }) {
     return (
         <div className="signup">
             <div className="signup-wrapper">
-                <div className="back-btn" onClick={crossBtn}>
+                <div className="back-btn" onClick={() => { crossBtn(); setCookieBtn(); }}>
                     <FontAwesomeIcon icon={faXmark} />
                 </div>
                 <div className="greet">Welcome Back!</div>

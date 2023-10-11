@@ -2,11 +2,29 @@ import "../assets/styles/Navigation.css"
 import SignUp from "./SignUp";
 import SignIn from './SignIn';
 import { useState } from "react";
+import Cookies from 'js-cookie';
+
 
 function Navigation() {
 
+    let cook = Cookies.get('username');
+
     const [signUpToggle, setSignUpToggle] = useState(false);
     const [signInToggle, setSignInToggle] = useState(false);
+    const [cookie, setCookie] = useState(cook);
+
+    console.log(cookie);
+
+    const handleLogOutBtn = () => {
+        Cookies.remove('username');
+        setCookie(Cookies.get('username'));
+    }
+    
+
+    const handleSetCookie = () => {
+        console.log('hello')
+        setCookie(Cookies.get('username'));
+    }
 
     const handleSignUpBtn = () => {
         setSignUpToggle(!signUpToggle);
@@ -16,12 +34,13 @@ function Navigation() {
         setSignInToggle(!signInToggle);
     }
 
-    console.log(document.cookie);
+
+
 
     return (
         <div className="navigation">
             <div className="search">
-                <input type="text" placeholder="Search in Gallery"/>
+                <input type="text" placeholder="Search in Gallery" />
             </div>
             <div className="nav-btns">
                 <div className="info-btns">
@@ -29,14 +48,20 @@ function Navigation() {
                     <div>Your Images</div>
                 </div>
                 <div className="sign-btn">
-                   <div className="signUp-btn">
-                    {!signUpToggle && <div  onClick={handleSignUpBtn}>SignUp</div>}
-                    {signUpToggle && <SignUp crossBtn = {handleSignUpBtn} />}
-                   </div>
-                   <div className="signIn-btn">
-                   {!signInToggle && <div  onClick={handleSignInBtn}>SignIn</div>}
-                    {signInToggle && <SignIn crossBtn = {handleSignInBtn} />}
-                   </div>
+                    {cookie === undefined ? (
+                        <div className="sign-btns">
+                            <div className="signUp-btn">
+                                {!signUpToggle && <div onClick={handleSignUpBtn}>SignUp</div>}
+                                {signUpToggle && <SignUp crossBtn={handleSignUpBtn} setCookieBtn = {handleSetCookie}/>}
+                            </div>
+                            <div className="signIn-btn">
+                                {!signInToggle && <div onClick={handleSignInBtn}>SignIn</div>}
+                                {signInToggle && <SignIn crossBtn={handleSignInBtn} setCookieBtn = {handleSetCookie}/>}
+                            </div>
+                        </div>
+                    ) : (
+                        <div className="logOut-btn" onClick={handleLogOutBtn}>LogOut</div>
+                    )}
                 </div>
             </div>
         </div>
@@ -44,3 +69,4 @@ function Navigation() {
 }
 
 export default Navigation
+
