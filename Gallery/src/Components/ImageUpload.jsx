@@ -22,19 +22,27 @@ function ImageUpload({crossBtn, username}) {
 
     async function handleImageUpload() {
         const formDataToSend = new FormData();
-        formDataToSend.append('title', formData.title);
-        formDataToSend.append('desc', formData.desc);
         formDataToSend.append('imageFile', file);
 
-    // await fetch('http://localhost:8080/uploadImage', {
-    //   method: 'POST',
-    //   body: formDataToSend,
-    // });
+        crossBtn();
+        
+    await fetch('http://localhost:8080/uploadImage', {
+      method: 'POST',
+      body: formDataToSend,
+    });
 
     await fetch('http://localhost:8080/uploadImageData', {
         method: 'POST',
-        body: JSON.stringify(formData)
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            formData: formData,
+            username: username
+        }),
     })
+
+    
 
     }
 

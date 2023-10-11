@@ -37,6 +37,10 @@ function Navigation() {
     }
 
     const handleUploadBtn = () => {
+        if(cookie == undefined){
+            window.alert('You have to login in order to upload images');
+            return;
+        }
         setUpload(!upload)
     }
 

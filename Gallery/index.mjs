@@ -31,6 +31,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: [true, 'password cannot be blank']
     },
+    images: [
+        {
+        },
+    ]
 })
 
 const User = mongoose.model('User', UserSchema);
@@ -53,6 +57,11 @@ const storage = new CloudinaryStorage({
       allowedFormats: ['jpeg', 'png', 'jpg']
     },
   });
+
+// app.get('/deleteUsers', (req, res) => {
+//     User.deleteMany({});
+//     res.sendStatus(200);
+// })
 
 app.post('/signUp', async (req, res) => {
     console.log(req.body);
@@ -103,12 +112,27 @@ app.get('/users', async(req, res) => {
 
 const upload = multer({ storage })
 
+let imageUrl = '';
+
 app.post('/uploadImage', upload.single('imageFile'), async(req, res) => {
+    imageUrl = req.file.path;
     console.log(req.file.path);
-    console.log(req.body.title);
     res.sendStatus(200)
 })
 
+app.post('/uploadImageData', async(req, res) => {
+    console.log(req.body);
+    const user = await User.findOne({ username: req.body.username });
+    user.images.push({
+        title: req.body.formData.title,
+        desc: req.body.formData.desc,
+        url: imageUrl
+    })
+    
+    await user.save();
+
+    res.sendStatus(200);
+})
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
