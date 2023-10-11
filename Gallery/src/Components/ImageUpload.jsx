@@ -17,7 +17,7 @@ function ImageUpload({crossBtn, username}) {
             ...formData,
             [name]: value,
         });
-        console.log(file);
+        // console.log(file);
     }
 
     async function handleImageUpload() {

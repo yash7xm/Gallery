@@ -16,7 +16,7 @@ function ImagesGrid() {
                 const jsonData = await response.json();
                 setData(jsonData);
             } catch (error) {
-                console.error('An error occurred:', error);
+                // console.error('An error occurred:', error);
             }
         }
 

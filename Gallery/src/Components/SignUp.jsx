@@ -59,7 +59,7 @@ function SignUp({ crossBtn, setCookieBtn }) {
             } 
           })
           .catch((error) => {
-            console.error('Fetch error:', error);
+            // console.error('Fetch error:', error);
           });
       }
       

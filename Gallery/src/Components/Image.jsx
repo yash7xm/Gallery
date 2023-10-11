@@ -14,7 +14,7 @@ function Image({url, data, idx, un}) {
         setCount(prevCount => {
             return prevCount + 1;
         })
-        console.log(data.views);
+        // console.log(data.views);
         await fetch(`http://localhost:8080/updateImageViews?username=${un}`, {
             method: 'POST',
             headers: {

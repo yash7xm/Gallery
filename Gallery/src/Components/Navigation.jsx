@@ -15,7 +15,7 @@ function Navigation() {
     const [upload, setUpload] = useState(false);
     const [cookie, setCookie] = useState(cook);
 
-    console.log(cookie);
+    // console.log(cookie);
 
     const handleLogOutBtn = () => {
         Cookies.remove('username');
@@ -24,7 +24,7 @@ function Navigation() {
     
 
     const handleSetCookie = () => {
-        console.log('hello')
+        // console.log('hello')
         setCookie(Cookies.get('username'));
     }
 

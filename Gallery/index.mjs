@@ -19,7 +19,7 @@ const app = express();
 const port = 8080;
 
 mongoose.connect(process.env.MONGO_PROD_URL)
-    .then(() => console.log('connected db'));
+    // .then(() => console.log('connected db'));
 
 
 const UserSchema = new mongoose.Schema({
@@ -64,14 +64,14 @@ app.get('/delete', async (req, res) => {
         await User.deleteMany({});
         res.sendStatus(200);
     } catch (error) {
-        console.error('An error occurred:', error);
+        // console.error('An error occurred:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
 });
 
 
 app.post('/signUp', async (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
 
 
     const salt = await bcrypt.genSalt(12);
@@ -123,12 +123,12 @@ let imageUrl = '';
 
 app.post('/uploadImage', upload.single('imageFile'), async(req, res) => {
     imageUrl = req.file.path;
-    console.log(req.file.path);
+    // console.log(req.file.path);
     res.sendStatus(200)
 })
 
 app.post('/uploadImageData', async(req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     const user = await User.findOne({ username: req.body.username });
     let initialCount = 0;
     user.images.push({
@@ -146,7 +146,7 @@ app.post('/uploadImageData', async(req, res) => {
 app.get('/imageData', async(req, res) => {
     const username = req.query.username;
     const user = await User.findOne({ username: username });
-    console.log(user.images);
+    // console.log(user.images);
     res.json(user.images);
 })
 
@@ -170,10 +170,10 @@ app.post('/updateImageViews', async (req, res) => {
 
         await user.save();
 
-        console.log(`Updated views for image at index ${imageIndex}: ${user.images[imageIndex].views}`);
+        // console.log(`Updated views for image at index ${imageIndex}: ${user.images[imageIndex].views}`);
         res.sendStatus(200);
     } catch (error) {
-        console.error('An error occurred:', error);
+        // console.error('An error occurred:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
 });
@@ -181,7 +181,7 @@ app.post('/updateImageViews', async (req, res) => {
 
 
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+    // console.log(`Server is running on port ${port}`);
 });
 
 
