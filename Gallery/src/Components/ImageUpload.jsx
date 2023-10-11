@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import '../assets/styles/ImageUpload.css'
 
-function ImageUpload() {
+function ImageUpload({crossBtn}) {
     return(
         <div className='main'>
          <div className="upload-popup">
@@ -10,7 +10,7 @@ function ImageUpload() {
                 <div className="first">
                     <div>#</div>
                     <div className="greet">Hello Aman!</div>
-                    <div className="close">
+                    <div className="close" onClick={crossBtn}>
                     <FontAwesomeIcon icon={faXmark} />
                     </div>
                 </div>

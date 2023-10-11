@@ -49,7 +49,7 @@ function Navigation() {
                 <div className="info-btns">
                     <div>
                         {!upload && <div onClick={handleUploadBtn}>Upload</div>}
-                        {upload && <ImageUpload />}
+                        {upload && <ImageUpload crossBtn={handleUploadBtn}/>}
                     </div>
                     <div>Your Images</div>
                 </div>
