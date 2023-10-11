@@ -3,6 +3,11 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import bcrypt from 'bcryptjs';
 import Cookies from 'js-cookie';
+import multer from 'multer';
+import { v2 as cloudinary } from 'cloudinary';
+import { CloudinaryStorage } from 'multer-storage-cloudinary';
+
+
 
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
@@ -10,6 +15,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
+
 const port = 8080;
 
 mongoose.connect(process.env.MONGO_PROD_URL)
@@ -34,6 +40,19 @@ app.use(cors());
 
 let sessionId = '';
 
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_KEY,
+    api_secret: process.env.CLOUDINARY_SECRET
+})
+
+const storage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+      folder: 'Gallery',
+      allowedFormats: ['jpeg', 'png', 'jpg']
+    },
+  });
 
 app.post('/signUp', async (req, res) => {
     console.log(req.body);
@@ -79,6 +98,15 @@ app.get('/logOut', (req,res) => {
 app.get('/users', async(req, res) => {
     const allUsers = await User.find({});
     res.send(allUsers);
+})
+
+
+const upload = multer({ storage })
+
+app.post('/uploadImage', upload.single('imageFile'), async(req, res) => {
+    console.log(req.file.path);
+    console.log(req.body.title);
+    res.sendStatus(200)
 })
 
 

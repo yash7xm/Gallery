@@ -18,7 +18,7 @@
     border-bottom: 2px solid black;
 }
 
-.heading {
+.sidebar-heading {
     transform: rotate(-90deg);
     letter-spacing: 0.1em;
 }

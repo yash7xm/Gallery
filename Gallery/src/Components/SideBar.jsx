@@ -6,7 +6,7 @@ function SideBar() {
     return (
         <div className="sidebar">
             <div className="logo">YP</div>
-            <div className="heading">Gallery</div>
+            <div className="sidebar-heading">Gallery</div>
             <div className="threeLines">
             <FontAwesomeIcon icon={faBars} />
             </div>

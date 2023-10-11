@@ -49,7 +49,7 @@ function Navigation() {
                 <div className="info-btns">
                     <div>
                         {!upload && <div onClick={handleUploadBtn}>Upload</div>}
-                        {upload && <ImageUpload crossBtn={handleUploadBtn}/>}
+                        {upload && <ImageUpload crossBtn={handleUploadBtn} username = {cookie}/>}
                     </div>
                     <div>Your Images</div>
                 </div>
