@@ -58,10 +58,17 @@ const storage = new CloudinaryStorage({
     },
   });
 
-// app.get('/deleteUsers', (req, res) => {
-//     User.deleteMany({});
-//     res.sendStatus(200);
-// })
+
+app.get('/delete', async (req, res) => {
+    try {
+        await User.deleteMany({});
+        res.sendStatus(200);
+    } catch (error) {
+        console.error('An error occurred:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
 
 app.post('/signUp', async (req, res) => {
     console.log(req.body);
@@ -123,16 +130,55 @@ app.post('/uploadImage', upload.single('imageFile'), async(req, res) => {
 app.post('/uploadImageData', async(req, res) => {
     console.log(req.body);
     const user = await User.findOne({ username: req.body.username });
+    let initialCount = 0;
     user.images.push({
         title: req.body.formData.title,
         desc: req.body.formData.desc,
-        url: imageUrl
+        url: imageUrl,
+        views: initialCount
     })
-    
+
     await user.save();
 
     res.sendStatus(200);
 })
+
+app.get('/imageData', async(req, res) => {
+    const username = req.query.username;
+    const user = await User.findOne({ username: username });
+    console.log(user.images);
+    res.json(user.images);
+})
+
+app.post('/updateImageViews', async (req, res) => {
+    const username = req.query.username;
+    const imageIndex = req.body.idx;
+    const views = req.body.count;
+
+    try {
+        const user = await User.findOne({ username });
+
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        if (imageIndex < 0 || imageIndex >= user.images.length) {
+            return res.status(400).json({ error: 'Invalid image index' });
+        }
+
+        user.images[imageIndex].views = views;
+
+        await user.save();
+
+        console.log(`Updated views for image at index ${imageIndex}: ${user.images[imageIndex].views}`);
+        res.sendStatus(200);
+    } catch (error) {
+        console.error('An error occurred:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

@@ -1,11 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
-function ExpandImage({toggleFxn, views}) {
+function ExpandImage({toggleFxn, views, imgUrl, imgData}) {
     return(
         <div className="img-img">
             <div className="img-wrapper" onClick={toggleFxn}>
-                <div className="main-img"></div>
+                <div className="main-img" style={{ backgroundImage: `url(${imgUrl})` }}></div>
                 <div className="img-info">
                     <div className="title-info">
                         <div className="titles">Title
@@ -13,12 +13,12 @@ function ExpandImage({toggleFxn, views}) {
                         <FontAwesomeIcon icon={faXmark} />
                         </span>
                         </div>
-                        <div className="img-title">Image Title</div>
+                        <div className="img-title">{imgData.title}</div>
                     </div>
                     <div className="desc-info">
                         <div className="titles">Description</div>
                         <div className="img-desc">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus voluptatem quibusdam incidunt, praesentium, repellat suscipit quisquam possimus ad nam dolores dolorum! Dolor accusantium veritatis fugiat unde amet voluptatum ipsa ut?
+                           {imgData.desc}
                         </div>
                     </div>
                     <div className="views-info">
