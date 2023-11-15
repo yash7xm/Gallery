@@ -11,10 +11,12 @@ To use Gallery locally, follow these steps:
    git clone https://github.com/yash7xm/Gallery.git
    `
 2. **Change your current directory** to the cloned repository: ` cd Gallery `
+
+3. **Navigate to the Project Directory**: ` cd Gallery`
  
 4. **Run the Frontend:** use the command: ` npm run dev `
   
-6. To **Start the Backend Server:**, use the command: ` node index.mjs `
+5. To **Start the Backend Server:**, use the command: ` node index.mjs `
 
 
 ## Features
