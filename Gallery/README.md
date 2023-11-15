@@ -1,8 +1,26 @@
-# React + Vite
+# Gallery
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to Gallery, a platform where you can showcase your images, track their views, and explore other users' images. The application provides user-friendly functionalities through sign-up and sign-in features.
+ 
+## Usage
 
-Currently, two official plugins are available:
+To use Gallery locally, follow these steps:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. **Clone the repository** to your local machine using Git:
+   `
+   git clone https://github.com/yash7xm/Gallery.git
+   `
+2. **Change your current directory** to the cloned repository: ` cd Gallery `
+ 
+4. **Run the Frontend:** use the command: ` npm run dev `
+  
+6. To **Start the Backend Server:**, use the command: ` node index.mjs `
+
+
+## Features
+
+1. **Image Upload** : Users can upload their images along with titles and descriptions.
+2. **View Tracking**: The platform records and displays the number of views for each uploaded image.
+3. **User Interaction**: Engage with other users by signing up and exploring their uploaded images.
+
+Feel free to explore and share your creativity on Gallery!
